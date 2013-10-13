@@ -1,0 +1,10 @@
+{% if ranks.count > 0 %}
+
+
+{% for rank in ranks %}
+	<li><a href="/ranks/get/{{ rank.id }}/">{{ rank.title }}</a></li>
+{% endfor %}
+
+{% else %}
+<li>None to show!</li>
+{% endif %}

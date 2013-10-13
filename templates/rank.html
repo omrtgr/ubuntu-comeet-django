@@ -1,0 +1,31 @@
+{% extends 'comeet_base.html' %}
+
+{% block sidebar %}
+			<ul>
+				<li><a href="/ranks/all">ranks</a></li>
+				
+			</ul>
+			{% endblock %}
+
+
+{% block content %}
+
+<h1>{{ rank.title }}</h1>
+<p>{{ rank.desc }}</p>
+<p>{{ rank.va1 }}</p>
+<p>{{ rank.val2 }}</p>
+<p>{{ rank.val3 }}</p>
+<p>{{ rank.val4 }}</p>
+<p>{{ rank.val5 }}</p>
+
+{% if rank.thumbnail %}
+{% endif %}
+<p>{{ rank.likes}} people liked this rank</p>
+<p><a href="/ranks/like/{{ rank.id }}">Like</a></p>
+<p><a href="/ranks/add_comment/{{ rank.id }}/">Write a Comment</a></p>
+<h2>Comments</h2>
+{% for c in rank.comment_set.all %}
+<p>{{c.name}}: {{c.body}}	</p>
+{% endfor %}
+
+{% endblock %}

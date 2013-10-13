@@ -1,0 +1,36 @@
+{% extends 'comeet_base.html' %}
+
+{% block sidebar %}
+			<ul>
+				<li><a href="/ranks/all">Ranks</a></li>
+				<li><a href="/admin">Admin</a></li>
+				<li><a href="/ranks/create/">Create Rank</a></li>
+
+			</ul>
+			<h3>Search</h3>
+			{% csrf_token %}
+			<input type="text" id="search" name="search" />
+			<ul id="search-results">
+				
+			</ul>
+			{% endblock %}
+
+{% block content %}
+<h2>Language is: {{ language }}</h2>
+<h2>Session Language is: {{ session_language }}</h2>
+
+{% if ranks.count > 0 %}
+	<h1>Ranks</h1>
+	{% for rank in ranks %}
+		<div>
+		<h2><a href="/ranks/get/{{ rank.id }}">{{ rank.title }}</a></h2>
+		<p>{{ rank.desc | lower | truncatewords:10 }}</p>
+		</div>
+	{% endfor %}
+{% else %}
+
+<p>None to show!</p>
+
+{% endif %}
+
+{% endblock %}

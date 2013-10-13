@@ -1,0 +1,22 @@
+
+{% extends "comeet_base.html" %}
+
+{% block sidebar %}
+<ul><li><a href="/ranks/all">Cancel</a></li></ul>
+{% endblock %}
+
+{% block content %}
+
+<form action="/ranks/create/" method="post" enctype="multipart/form-data">{% csrf_token %}
+	<ul>
+		{{ form.as_ul }}
+	</ul>
+
+	<input type="submit" name="submit" value="Create Rank">
+	
+
+
+
+</form>
+
+{% endblock %}
